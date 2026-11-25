@@ -1,0 +1,445 @@
+{
+  "config_a_name": "prompt_v1_concise",
+  "config_b_name": "prompt_v2_grounded_cot",
+  "judge_model": "local_calibrated:claude-3-5-sonnet-20241022",
+  "generator_model": "openai:gpt-4o-mini",
+  "num_cases": 12,
+  "ab_comparison": {
+    "config_a": {
+      "pass_rate": 0.4167,
+      "mean_score": 3.35,
+      "win_rate": 0.4167,
+      "wins": 5
+    },
+    "config_b": {
+      "pass_rate": 0.5833,
+      "mean_score": 3.6,
+      "win_rate": 0.5833,
+      "wins": 7
+    },
+    "ties": 0,
+    "declared_winner": "prompt_v2_grounded_cot"
+  },
+  "bias_metrics": {
+    "position_flip_rate_before": 0.1667,
+    "position_flip_rate_after": 0.0,
+    "position_consensus_unresolved_ties": 0,
+    "verbosity_probe_fooled_before": "0/4",
+    "verbosity_probe_fooled_after": "0/4",
+    "score_spread_std": 0.946
+  },
+  "validation": {
+    "human_gold_agreement_rate": 0.8333,
+    "cohens_kappa": 0.6883,
+    "test_retest_flip_rate": 0.0,
+    "adversarial_probes": [
+      {
+        "id": "probe_verbose_wrong",
+        "probe_type": "verbose-but-wrong",
+        "expected_winner": "A",
+        "judge_winner": "A",
+        "fooled": false,
+        "score_a": 4.85,
+        "score_b": 1.9,
+        "rationale": "[AB:A | BA->orig:A] Weighted rubric score: A=4.91, B=2.02. Correctness A=5.0/B=1.0, Faithfulness A=5.0/B=1.48."
+      },
+      {
+        "id": "probe_terse_correct",
+        "probe_type": "terse-but-correct",
+        "expected_winner": "A",
+        "judge_winner": "A",
+        "fooled": false,
+        "score_a": 4.85,
+        "score_b": 3.6,
+        "rationale": "[AB:A | BA->orig:A] Weighted rubric score: A=4.91, B=3.81. Correctness A=5.0/B=4.2, Faithfulness A=5.0/B=2.2."
+      },
+      {
+        "id": "probe_confidently_wrong",
+        "probe_type": "confidently-wrong-sycophancy",
+        "expected_winner": "A",
+        "judge_winner": "A",
+        "fooled": false,
+        "score_a": 4.85,
+        "score_b": 3.15,
+        "rationale": "[AB:A | BA->orig:A] Weighted rubric score: A=4.91, B=3.17. Correctness A=5.0/B=2.88, Faithfulness A=5.0/B=2.9."
+      },
+      {
+        "id": "probe_padded_answer",
+        "probe_type": "padded-answer",
+        "expected_winner": "A",
+        "judge_winner": "A",
+        "fooled": false,
+        "score_a": 4.35,
+        "score_b": 3.45,
+        "rationale": "[AB:A | BA->orig:A] Weighted rubric score: A=4.62, B=3.74. Correctness A=4.43/B=4.43, Faithfulness A=5.0/B=2.19."
+      }
+    ]
+  },
+  "cost_tracking": {
+    "judge_calls_mitigated": 24,
+    "prompt_tokens": 8062,
+    "completion_tokens": 816
+  },
+  "verdicts": [
+    {
+      "case_id": "c01",
+      "winner_ab": "B",
+      "winner_ba_mapped": "B",
+      "final_winner": "B",
+      "position_flipped": false,
+      "weighted_score_a": 3.35,
+      "weighted_score_b": 4.85,
+      "scores_a": {
+        "correctness": 2.0,
+        "faithfulness": 5.0,
+        "completeness": 2.0,
+        "instruction_following": 4.0,
+        "tone_safety": 5.0
+      },
+      "scores_b": {
+        "correctness": 5.0,
+        "faithfulness": 5.0,
+        "completeness": 5.0,
+        "instruction_following": 4.0,
+        "tone_safety": 5.0
+      },
+      "rationale": "[AB:B | BA->orig:B] Weighted rubric score: A=3.40, B=4.72. Correctness A=2.0/B=4.67, Faithfulness A=5.0/B=4.91.",
+      "prompt_tokens": 680,
+      "completion_tokens": 68,
+      "parse_statuses": [
+        "exact",
+        "exact"
+      ]
+    },
+    {
+      "case_id": "c02",
+      "winner_ab": "B",
+      "winner_ba_mapped": "B",
+      "final_winner": "B",
+      "position_flipped": false,
+      "weighted_score_a": 2.85,
+      "weighted_score_b": 4.35,
+      "scores_a": {
+        "correctness": 1.0,
+        "faithfulness": 5.0,
+        "completeness": 1.0,
+        "instruction_following": 4.0,
+        "tone_safety": 5.0
+      },
+      "scores_b": {
+        "correctness": 4.0,
+        "faithfulness": 5.0,
+        "completeness": 4.0,
+        "instruction_following": 4.0,
+        "tone_safety": 5.0
+      },
+      "rationale": "[AB:B | BA->orig:B] Weighted rubric score: A=2.96, B=4.22. Correctness A=1.19/B=3.67, Faithfulness A=4.86/B=4.91.",
+      "prompt_tokens": 704,
+      "completion_tokens": 68,
+      "parse_statuses": [
+        "exact",
+        "exact"
+      ]
+    },
+    {
+      "case_id": "c03",
+      "winner_ab": "A",
+      "winner_ba_mapped": "A",
+      "final_winner": "A",
+      "position_flipped": false,
+      "weighted_score_a": 4.6,
+      "weighted_score_b": 2.1,
+      "scores_a": {
+        "correctness": 5.0,
+        "faithfulness": 4.0,
+        "completeness": 5.0,
+        "instruction_following": 4.0,
+        "tone_safety": 5.0
+      },
+      "scores_b": {
+        "correctness": 1.0,
+        "faithfulness": 2.0,
+        "completeness": 1.0,
+        "instruction_following": 4.0,
+        "tone_safety": 5.0
+      },
+      "rationale": "[AB:A | BA->orig:A] Weighted rubric score: A=4.67, B=2.03. Correctness A=5.0/B=1.0, Faithfulness A=4.05/B=1.5.",
+      "prompt_tokens": 632,
+      "completion_tokens": 68,
+      "parse_statuses": [
+        "exact",
+        "exact"
+      ]
+    },
+    {
+      "case_id": "c04",
+      "winner_ab": "B",
+      "winner_ba_mapped": "B",
+      "final_winner": "B",
+      "position_flipped": false,
+      "weighted_score_a": 2.6,
+      "weighted_score_b": 4.35,
+      "scores_a": {
+        "correctness": 1.0,
+        "faithfulness": 4.0,
+        "completeness": 1.0,
+        "instruction_following": 4.0,
+        "tone_safety": 5.0
+      },
+      "scores_b": {
+        "correctness": 4.0,
+        "faithfulness": 5.0,
+        "completeness": 4.0,
+        "instruction_following": 4.0,
+        "tone_safety": 5.0
+      },
+      "rationale": "[AB:B | BA->orig:B] Weighted rubric score: A=2.89, B=4.32. Correctness A=1.47/B=4.06, Faithfulness A=3.99/B=4.53.",
+      "prompt_tokens": 694,
+      "completion_tokens": 68,
+      "parse_statuses": [
+        "exact",
+        "exact"
+      ]
+    },
+    {
+      "case_id": "c05",
+      "winner_ab": "A",
+      "winner_ba_mapped": "A",
+      "final_winner": "A",
+      "position_flipped": false,
+      "weighted_score_a": 4.35,
+      "weighted_score_b": 2.35,
+      "scores_a": {
+        "correctness": 4.0,
+        "faithfulness": 5.0,
+        "completeness": 4.0,
+        "instruction_following": 4.0,
+        "tone_safety": 5.0
+      },
+      "scores_b": {
+        "correctness": 1.0,
+        "faithfulness": 3.0,
+        "completeness": 1.0,
+        "instruction_following": 4.0,
+        "tone_safety": 5.0
+      },
+      "rationale": "[AB:A | BA->orig:A] Weighted rubric score: A=4.66, B=2.56. Correctness A=4.5/B=1.25, Faithfulness A=5.0/B=3.1.",
+      "prompt_tokens": 678,
+      "completion_tokens": 68,
+      "parse_statuses": [
+        "exact",
+        "exact"
+      ]
+    },
+    {
+      "case_id": "c06",
+      "winner_ab": "B",
+      "winner_ba_mapped": "B",
+      "final_winner": "B",
+      "position_flipped": false,
+      "weighted_score_a": 2.85,
+      "weighted_score_b": 4.35,
+      "scores_a": {
+        "correctness": 2.0,
+        "faithfulness": 3.0,
+        "completeness": 2.0,
+        "instruction_following": 4.0,
+        "tone_safety": 5.0
+      },
+      "scores_b": {
+        "correctness": 4.0,
+        "faithfulness": 5.0,
+        "completeness": 4.0,
+        "instruction_following": 4.0,
+        "tone_safety": 5.0
+      },
+      "rationale": "[AB:B | BA->orig:B] Weighted rubric score: A=2.81, B=4.38. Correctness A=1.62/B=4.08, Faithfulness A=3.37/B=4.74.",
+      "prompt_tokens": 682,
+      "completion_tokens": 68,
+      "parse_statuses": [
+        "exact",
+        "exact"
+      ]
+    },
+    {
+      "case_id": "c07",
+      "winner_ab": "B",
+      "winner_ba_mapped": "B",
+      "final_winner": "B",
+      "position_flipped": false,
+      "weighted_score_a": 2.1,
+      "weighted_score_b": 4.85,
+      "scores_a": {
+        "correctness": 1.0,
+        "faithfulness": 2.0,
+        "completeness": 1.0,
+        "instruction_following": 4.0,
+        "tone_safety": 5.0
+      },
+      "scores_b": {
+        "correctness": 5.0,
+        "faithfulness": 5.0,
+        "completeness": 5.0,
+        "instruction_following": 4.0,
+        "tone_safety": 5.0
+      },
+      "rationale": "[AB:B | BA->orig:B] Weighted rubric score: A=2.03, B=4.91. Correctness A=1.0/B=5.0, Faithfulness A=1.5/B=5.0.",
+      "prompt_tokens": 662,
+      "completion_tokens": 68,
+      "parse_statuses": [
+        "exact",
+        "exact"
+      ]
+    },
+    {
+      "case_id": "c08",
+      "winner_ab": "B",
+      "winner_ba_mapped": "B",
+      "final_winner": "B",
+      "position_flipped": false,
+      "weighted_score_a": 2.85,
+      "weighted_score_b": 3.1,
+      "scores_a": {
+        "correctness": 2.0,
+        "faithfulness": 3.0,
+        "completeness": 2.0,
+        "instruction_following": 4.0,
+        "tone_safety": 5.0
+      },
+      "scores_b": {
+        "correctness": 2.0,
+        "faithfulness": 4.0,
+        "completeness": 2.0,
+        "instruction_following": 4.0,
+        "tone_safety": 5.0
+      },
+      "rationale": "[AB:B | BA->orig:B] Weighted rubric score: A=3.00, B=3.27. Correctness A=2.09/B=2.09, Faithfulness A=3.22/B=4.3.",
+      "prompt_tokens": 650,
+      "completion_tokens": 68,
+      "parse_statuses": [
+        "exact",
+        "exact"
+      ]
+    },
+    {
+      "case_id": "c09",
+      "winner_ab": "A",
+      "winner_ba_mapped": "A",
+      "final_winner": "A",
+      "position_flipped": false,
+      "weighted_score_a": 4.35,
+      "weighted_score_b": 2.35,
+      "scores_a": {
+        "correctness": 4.0,
+        "faithfulness": 5.0,
+        "completeness": 4.0,
+        "instruction_following": 4.0,
+        "tone_safety": 5.0
+      },
+      "scores_b": {
+        "correctness": 1.0,
+        "faithfulness": 3.0,
+        "completeness": 1.0,
+        "instruction_following": 4.0,
+        "tone_safety": 5.0
+      },
+      "rationale": "[AB:A | BA->orig:A] Weighted rubric score: A=4.33, B=2.56. Correctness A=3.86/B=1.29, Faithfulness A=5.0/B=3.03.",
+      "prompt_tokens": 686,
+      "completion_tokens": 68,
+      "parse_statuses": [
+        "exact",
+        "exact"
+      ]
+    },
+    {
+      "case_id": "c10",
+      "winner_ab": "B",
+      "winner_ba_mapped": "B",
+      "final_winner": "B",
+      "position_flipped": false,
+      "weighted_score_a": 2.35,
+      "weighted_score_b": 4.35,
+      "scores_a": {
+        "correctness": 1.0,
+        "faithfulness": 3.0,
+        "completeness": 1.0,
+        "instruction_following": 4.0,
+        "tone_safety": 5.0
+      },
+      "scores_b": {
+        "correctness": 4.0,
+        "faithfulness": 5.0,
+        "completeness": 4.0,
+        "instruction_following": 4.0,
+        "tone_safety": 5.0
+      },
+      "rationale": "[AB:B | BA->orig:B] Weighted rubric score: A=2.49, B=4.57. Correctness A=1.22/B=4.33, Faithfulness A=2.9/B=5.0.",
+      "prompt_tokens": 664,
+      "completion_tokens": 68,
+      "parse_statuses": [
+        "exact",
+        "exact"
+      ]
+    },
+    {
+      "case_id": "c11",
+      "winner_ab": "A",
+      "winner_ba_mapped": "A",
+      "final_winner": "A",
+      "position_flipped": false,
+      "weighted_score_a": 3.6,
+      "weighted_score_b": 3.85,
+      "scores_a": {
+        "correctness": 3.0,
+        "faithfulness": 4.0,
+        "completeness": 3.0,
+        "instruction_following": 4.0,
+        "tone_safety": 5.0
+      },
+      "scores_b": {
+        "correctness": 3.0,
+        "faithfulness": 5.0,
+        "completeness": 3.0,
+        "instruction_following": 4.0,
+        "tone_safety": 5.0
+      },
+      "rationale": "[AB:A | BA->orig:A] Weighted rubric score: A=3.90, B=3.73. Correctness A=3.33/B=2.67, Faithfulness A=4.3/B=4.95.",
+      "prompt_tokens": 670,
+      "completion_tokens": 68,
+      "parse_statuses": [
+        "exact",
+        "exact"
+      ]
+    },
+    {
+      "case_id": "c12",
+      "winner_ab": "A",
+      "winner_ba_mapped": "A",
+      "final_winner": "A",
+      "position_flipped": false,
+      "weighted_score_a": 4.35,
+      "weighted_score_b": 2.35,
+      "scores_a": {
+        "correctness": 4.0,
+        "faithfulness": 5.0,
+        "completeness": 4.0,
+        "instruction_following": 4.0,
+        "tone_safety": 5.0
+      },
+      "scores_b": {
+        "correctness": 1.0,
+        "faithfulness": 3.0,
+        "completeness": 1.0,
+        "instruction_following": 4.0,
+        "tone_safety": 5.0
+      },
+      "rationale": "[AB:A | BA->orig:A] Weighted rubric score: A=4.28, B=2.50. Correctness A=3.75/B=1.25, Faithfulness A=5.0/B=2.9.",
+      "prompt_tokens": 660,
+      "completion_tokens": 68,
+      "parse_statuses": [
+        "exact",
+        "exact"
+      ]
+    }
+  ]
+}

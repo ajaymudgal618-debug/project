@@ -1,0 +1,162 @@
+[
+  {
+    "id": "q01",
+    "question": "How does SQLite prevent duplicate vectors during re-ingestion?",
+    "relevant_doc": "sqlite_vectors",
+    "relevant_keywords": ["sha-256", "insert or ignore", "duplicate"],
+    "gold_answer": "Each document is hashed with SHA-256 and each chunk gets a deterministic content-addressed primary key with INSERT OR IGNORE and ON CONFLICT updates.",
+    "unanswerable": false
+  },
+  {
+    "id": "q02",
+    "question": "How much memory does a 100,000 vector float32 matrix of 384 dimensions occupy?",
+    "relevant_doc": "sqlite_vectors",
+    "relevant_keywords": ["153.6 mb", "384", "float32"],
+    "gold_answer": "A full float32 matrix of 100,000 vectors at 384 dimensions occupies roughly 153.6 MB.",
+    "unanswerable": false
+  },
+  {
+    "id": "q03",
+    "question": "Which columns have B-tree indexes in the SQLite vector store?",
+    "relevant_doc": "sqlite_vectors",
+    "relevant_keywords": ["source_type", "topic", "b-tree"],
+    "gold_answer": "SQLite B-tree indexes are created on source_type and topic for metadata filtering.",
+    "unanswerable": false
+  },
+  {
+    "id": "q04",
+    "question": "What are the default chunk size and overlap recommended in the chunking guide?",
+    "relevant_doc": "chunking_guide",
+    "relevant_keywords": ["500", "100", "overlap"],
+    "gold_answer": "A default chunk size of 500 characters with a 100-character overlap is recommended.",
+    "unanswerable": false
+  },
+  {
+    "id": "q05",
+    "question": "What happens when chunk size is too small, such as 200 characters?",
+    "relevant_doc": "chunking_guide",
+    "relevant_keywords": ["200", "fragment", "recall"],
+    "gold_answer": "Smaller chunks such as 200 characters fragment multi-sentence explanations and reduce recall on complex questions.",
+    "unanswerable": false
+  },
+  {
+    "id": "q06",
+    "question": "How does boundary-aware splitting avoid cutting mid-word?",
+    "relevant_doc": "chunking_guide",
+    "relevant_keywords": ["20 percent", "sentence", "whitespace"],
+    "gold_answer": "Boundary-aware splitters scan backward within the final 20 percent of the window for paragraph breaks, sentence periods, or whitespace.",
+    "unanswerable": false
+  },
+  {
+    "id": "q07",
+    "question": "How does the RAG pipeline handle queries with no relevant context?",
+    "relevant_doc": "grounded_qa",
+    "relevant_keywords": ["min_score", "refusal", "threshold"],
+    "gold_answer": "When zero retrieved chunks meet min_score, the service short-circuits to an explicit refusal message without invoking the generator.",
+    "unanswerable": false
+  },
+  {
+    "id": "q08",
+    "question": "How should factual claims in generated answers be cited?",
+    "relevant_doc": "grounded_qa",
+    "relevant_keywords": ["chunk_id", "inline", "citation"],
+    "gold_answer": "Every factual claim should include an inline bracketed citation such as [chunk_id].",
+    "unanswerable": false
+  },
+  {
+    "id": "q09",
+    "question": "What is the difference between Recall@k and Mean Reciprocal Rank (MRR)?",
+    "relevant_doc": "retrieval_metrics",
+    "relevant_keywords": ["recall@k", "mrr", "rank"],
+    "gold_answer": "Recall@k measures whether at least one relevant chunk appears in top-k, whereas MRR averages 1/rank of the first relevant chunk.",
+    "unanswerable": false
+  },
+  {
+    "id": "q10",
+    "question": "What does Context Precision measure in retrieval evaluation?",
+    "relevant_doc": "retrieval_metrics",
+    "relevant_keywords": ["context precision", "proportion", "noisy"],
+    "gold_answer": "Context Precision measures the proportion of retrieved chunks in the top-k set that are actually relevant, penalizing noisy context.",
+    "unanswerable": false
+  },
+  {
+    "id": "q11",
+    "question": "How many bytes does a single 384-dimensional float32 vector require?",
+    "relevant_doc": "cost_modeling",
+    "relevant_keywords": ["1,536 bytes", "384", "float32"],
+    "gold_answer": "A 384-dimensional float32 vector requires 1,536 bytes of raw storage.",
+    "unanswerable": false
+  },
+  {
+    "id": "q12",
+    "question": "What is the estimated disk footprint at 1 million and 10 million vectors?",
+    "relevant_doc": "cost_modeling",
+    "relevant_keywords": ["2.5 gb", "25 gb", "1,000,000"],
+    "gold_answer": "At 1,000,000 vectors the footprint is roughly 2.5 GB, and at 10,000,000 vectors it reaches roughly 25 GB.",
+    "unanswerable": false
+  },
+  {
+    "id": "q13",
+    "question": "How much does a dedicated always-on managed vector pod cost at 10M vectors?",
+    "relevant_doc": "cost_modeling",
+    "relevant_keywords": ["400/mo", "70/mo", "managed"],
+    "gold_answer": "A dedicated always-on managed pod with replication starts around $70/mo and scales past $400/mo at 10M vectors.",
+    "unanswerable": false
+  },
+  {
+    "id": "q14",
+    "question": "How should secrets and runtime parameters be configured in the FastAPI service?",
+    "relevant_doc": "fastapi_service",
+    "relevant_keywords": ["environment variables", "hardcoding", "secrets"],
+    "gold_answer": "All runtime parameters and API keys must be injected through environment variables with no hardcoded secrets.",
+    "unanswerable": false
+  },
+  {
+    "id": "q15",
+    "question": "What telemetry fields are recorded for every query?",
+    "relevant_doc": "fastapi_service",
+    "relevant_keywords": ["latency", "chunk", "token"],
+    "gold_answer": "Every query logs retrieval latency, end-to-end latency, chunk count, and prompt plus completion token counts.",
+    "unanswerable": false
+  },
+  {
+    "id": "q16",
+    "question": "How much RAM and disk does truncating embeddings from 1536d to 384d save?",
+    "relevant_doc": "embedding_tradeoffs",
+    "relevant_keywords": ["4x", "384", "1.5 kb"],
+    "gold_answer": "Truncating from 1536 to 384 dimensions cuts RAM and disk footprint by 4x, using 1.5 KB per float32 vector.",
+    "unanswerable": false
+  },
+  {
+    "id": "q17",
+    "question": "At what scale and query traffic does an embedded SQLite vector store excel?",
+    "relevant_doc": "when_to_use_managed_db",
+    "relevant_keywords": ["5 million", "20 qps", "single-node"],
+    "gold_answer": "An embedded SQLite vector store excels for single-node workloads under 5 million vectors with traffic under 20 QPS.",
+    "unanswerable": false
+  },
+  {
+    "id": "q18",
+    "question": "When should a team migrate back to a managed vector database?",
+    "relevant_doc": "when_to_use_managed_db",
+    "relevant_keywords": ["10m vectors", "hnsw", "multi-writer"],
+    "gold_answer": "Migrate back to a managed DB when corpus size exceeds single-node RAM above 10M vectors, when multi-writer replication is needed, or when p95 SLA demands HNSW at high QPS.",
+    "unanswerable": false
+  },
+  {
+    "id": "q19",
+    "question": "What is the boiling point of liquid nitrogen in Kelvin?",
+    "relevant_doc": null,
+    "relevant_keywords": [],
+    "gold_answer": "NO_RELEVANT_CONTEXT",
+    "unanswerable": true
+  },
+  {
+    "id": "q20",
+    "question": "Who won the 1998 FIFA World Cup final and what was the score?",
+    "relevant_doc": null,
+    "relevant_keywords": [],
+    "gold_answer": "NO_RELEVANT_CONTEXT",
+    "unanswerable": true
+  }
+]

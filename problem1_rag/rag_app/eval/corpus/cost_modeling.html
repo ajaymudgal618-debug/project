@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Vector Database Cost Modeling</title></head>
+<body>
+  <nav>Home | Docs</nav>
+  <main>
+    <h1>Vector Database Cost Modeling Across Scale</h1>
+    <p>Managed vector databases typically charge per pod-hour or per million vector-dimensions stored in memory. For lightly-queried indexes, always-on RAM pods create high fixed monthly bills even when query volume is low.</p>
+    <h2>Storage Footprint Calculation</h2>
+    <p>A 384-dimensional float32 vector requires 1,536 bytes of raw storage. Including SQLite B-tree indexes, text payloads, and metadata overhead, 100,000 vectors occupy roughly 250 MB on disk. At 1,000,000 vectors the footprint is ~2.5 GB, and at 10,000,000 vectors it reaches ~25 GB.</p>
+    <h2>Self-Hosted vs Managed Economics</h2>
+    <p>On a single cloud VM with attached SSD storage, 100K and 1M vector indexes run comfortably on a $12/mo to $24/mo instance. By contrast, a dedicated always-on managed pod with replication starts around $70/mo and scales past $400/mo at 10M vectors.</p>
+  </main>
+  <footer>Copyright 2026</footer>
+</body>
+</html>

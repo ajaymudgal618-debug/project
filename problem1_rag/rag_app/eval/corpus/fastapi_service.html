@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><title>FastAPI Service Design</title></head>
+<body>
+  <main>
+    <h1>FastAPI Service Design and Observability</h1>
+    <p>Exposing the RAG pipeline over HTTP with FastAPI provides automatic OpenAPI schema validation via Pydantic models and low-overhead JSON serialization.</p>
+    <h2>Configuration Hygiene</h2>
+    <p>All runtime parameters—including database paths, chunk sizes, similarity thresholds, and API keys—must be injected through environment variables. Hardcoding secrets in source files risks credential leaks in version control.</p>
+    <h2>Per-Query Telemetry</h2>
+    <p>Every query response and JSONL log entry records retrieval latency in milliseconds, end-to-end latency, number of retrieved chunks, and prompt plus completion token counts for cost tracking.</p>
+  </main>
+</body>
+</html>

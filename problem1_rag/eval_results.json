@@ -1,0 +1,312 @@
+{
+  "k": 5,
+  "num_questions": 20,
+  "num_answerable": 18,
+  "num_unanswerable": 2,
+  "ingest_initial": {
+    "files_scanned": 8,
+    "documents_processed": 8,
+    "chunks_inserted": 20,
+    "chunks_skipped": 0,
+    "chunk_size": 500,
+    "overlap": 100,
+    "embedding_model": "local-hash-ngram-v1 (384d)",
+    "store_stats": {
+      "documents": 8,
+      "vectors": 20,
+      "by_source_type": {
+        "html": 4,
+        "md": 12,
+        "pdf": 4
+      },
+      "db_size_kb": 92.0
+    }
+  },
+  "ingest_idempotent_rerun": {
+    "files_scanned": 8,
+    "documents_processed": 8,
+    "chunks_inserted": 0,
+    "chunks_skipped": 20,
+    "chunk_size": 500,
+    "overlap": 100,
+    "embedding_model": "local-hash-ngram-v1 (384d)",
+    "store_stats": {
+      "documents": 8,
+      "vectors": 20,
+      "by_source_type": {
+        "html": 4,
+        "md": 12,
+        "pdf": 4
+      },
+      "db_size_kb": 96.0
+    }
+  },
+  "retrieval_metrics": {
+    "recall_at_k": 0.9444,
+    "mrr": 0.8611,
+    "ndcg_at_k": 0.8829,
+    "context_precision": 0.6417
+  },
+  "answer_quality": {
+    "faithfulness_lexical_grounding": 1.0,
+    "answer_relevance": 0.8962,
+    "exact_match": 0.0,
+    "token_f1": 0.2951,
+    "unanswerable_refusal_rate": 1.0
+  },
+  "latency_ms": {
+    "retrieval_p50": 0.565,
+    "retrieval_p95": 0.763,
+    "end_to_end_p50": 0.625,
+    "end_to_end_p95": 0.902
+  },
+  "cost_comparison": [
+    {
+      "vectors": "100K",
+      "sqlite_store_usd_mo": 6.0,
+      "managed_db_usd_mo": 70.0,
+      "savings_pct": "91.4%",
+      "notes": "1 vCPU / 1GB RAM VM ($6/mo) vs 1x managed starter pod ($70/mo)"
+    },
+    {
+      "vectors": "1M",
+      "sqlite_store_usd_mo": 24.0,
+      "managed_db_usd_mo": 140.0,
+      "savings_pct": "82.9%",
+      "notes": "2 vCPU / 4GB RAM VM + 10GB SSD ($24/mo) vs 2x RAM pods ($140/mo)"
+    },
+    {
+      "vectors": "10M",
+      "sqlite_store_usd_mo": 96.0,
+      "managed_db_usd_mo": 420.0,
+      "savings_pct": "77.1%",
+      "notes": "4 vCPU / 16GB RAM VM + 50GB SSD ($96/mo) vs replicated 10M pod ($420/mo)"
+    }
+  ],
+  "per_question": [
+    {
+      "id": "q01",
+      "unanswerable": false,
+      "no_relevant_context": false,
+      "retrieval_ms": 0.687,
+      "total_ms": 0.855,
+      "chunk_count": 1,
+      "citations": [
+        "sqlite_vectors#0_b1543c842455"
+      ]
+    },
+    {
+      "id": "q02",
+      "unanswerable": false,
+      "no_relevant_context": false,
+      "retrieval_ms": 0.731,
+      "total_ms": 0.874,
+      "chunk_count": 4,
+      "citations": [
+        "cost_modeling#0_17816ccb5e2f",
+        "sqlite_vectors#2_006eaf13771a"
+      ]
+    },
+    {
+      "id": "q03",
+      "unanswerable": false,
+      "no_relevant_context": false,
+      "retrieval_ms": 0.563,
+      "total_ms": 0.682,
+      "chunk_count": 4,
+      "citations": [
+        "cost_modeling#0_17816ccb5e2f",
+        "sqlite_vectors#0_b1543c842455",
+        "cost_modeling#1_f50e15bfc673"
+      ]
+    },
+    {
+      "id": "q04",
+      "unanswerable": false,
+      "no_relevant_context": false,
+      "retrieval_ms": 0.54,
+      "total_ms": 0.585,
+      "chunk_count": 1,
+      "citations": [
+        "chunking_guide#0_6264d251cdfa"
+      ]
+    },
+    {
+      "id": "q05",
+      "unanswerable": false,
+      "no_relevant_context": false,
+      "retrieval_ms": 0.5,
+      "total_ms": 0.567,
+      "chunk_count": 2,
+      "citations": [
+        "chunking_guide#1_e8cd7536ae4e",
+        "chunking_guide#0_6264d251cdfa"
+      ]
+    },
+    {
+      "id": "q06",
+      "unanswerable": false,
+      "no_relevant_context": false,
+      "retrieval_ms": 0.534,
+      "total_ms": 0.581,
+      "chunk_count": 1,
+      "citations": [
+        "chunking_guide#1_e8cd7536ae4e"
+      ]
+    },
+    {
+      "id": "q07",
+      "unanswerable": false,
+      "no_relevant_context": false,
+      "retrieval_ms": 0.687,
+      "total_ms": 0.752,
+      "chunk_count": 2,
+      "citations": [
+        "grounded_qa#1_d45699d58878",
+        "retrieval_metrics#2_690592e3bb8e"
+      ]
+    },
+    {
+      "id": "q08",
+      "unanswerable": false,
+      "no_relevant_context": true,
+      "retrieval_ms": 0.622,
+      "total_ms": 0.623,
+      "chunk_count": 0,
+      "citations": []
+    },
+    {
+      "id": "q09",
+      "unanswerable": false,
+      "no_relevant_context": false,
+      "retrieval_ms": 0.59,
+      "total_ms": 0.659,
+      "chunk_count": 2,
+      "citations": [
+        "retrieval_metrics#1_61c8f820ece1",
+        "retrieval_metrics#0_044ce73baf8a"
+      ]
+    },
+    {
+      "id": "q10",
+      "unanswerable": false,
+      "no_relevant_context": false,
+      "retrieval_ms": 0.548,
+      "total_ms": 0.602,
+      "chunk_count": 2,
+      "citations": [
+        "retrieval_metrics#2_690592e3bb8e",
+        "retrieval_metrics#0_044ce73baf8a"
+      ]
+    },
+    {
+      "id": "q11",
+      "unanswerable": false,
+      "no_relevant_context": false,
+      "retrieval_ms": 0.676,
+      "total_ms": 0.735,
+      "chunk_count": 1,
+      "citations": [
+        "cost_modeling#0_17816ccb5e2f"
+      ]
+    },
+    {
+      "id": "q12",
+      "unanswerable": false,
+      "no_relevant_context": true,
+      "retrieval_ms": 0.634,
+      "total_ms": 0.635,
+      "chunk_count": 0,
+      "citations": []
+    },
+    {
+      "id": "q13",
+      "unanswerable": false,
+      "no_relevant_context": false,
+      "retrieval_ms": 0.605,
+      "total_ms": 0.755,
+      "chunk_count": 5,
+      "citations": [
+        "cost_modeling#1_f50e15bfc673",
+        "when_to_use_managed_db#0_6fec20c97e2d",
+        "sqlite_vectors#0_b1543c842455"
+      ]
+    },
+    {
+      "id": "q14",
+      "unanswerable": false,
+      "no_relevant_context": false,
+      "retrieval_ms": 1.362,
+      "total_ms": 1.424,
+      "chunk_count": 1,
+      "citations": [
+        "fastapi_service#0_658033b06b3d"
+      ]
+    },
+    {
+      "id": "q15",
+      "unanswerable": false,
+      "no_relevant_context": false,
+      "retrieval_ms": 0.568,
+      "total_ms": 0.603,
+      "chunk_count": 1,
+      "citations": [
+        "fastapi_service#1_5405621eb2d2"
+      ]
+    },
+    {
+      "id": "q16",
+      "unanswerable": false,
+      "no_relevant_context": false,
+      "retrieval_ms": 0.542,
+      "total_ms": 0.609,
+      "chunk_count": 2,
+      "citations": [
+        "embedding_tradeoffs#0_855850d24353",
+        "embedding_tradeoffs#1_5c2e272e94f4"
+      ]
+    },
+    {
+      "id": "q17",
+      "unanswerable": false,
+      "no_relevant_context": false,
+      "retrieval_ms": 0.53,
+      "total_ms": 0.599,
+      "chunk_count": 2,
+      "citations": [
+        "when_to_use_managed_db#0_6fec20c97e2d",
+        "sqlite_vectors#0_b1543c842455"
+      ]
+    },
+    {
+      "id": "q18",
+      "unanswerable": false,
+      "no_relevant_context": false,
+      "retrieval_ms": 0.514,
+      "total_ms": 0.627,
+      "chunk_count": 2,
+      "citations": [
+        "when_to_use_managed_db#0_6fec20c97e2d",
+        "cost_modeling#0_17816ccb5e2f"
+      ]
+    },
+    {
+      "id": "q19",
+      "unanswerable": true,
+      "no_relevant_context": true,
+      "retrieval_ms": 0.494,
+      "total_ms": 0.495,
+      "chunk_count": 0,
+      "citations": []
+    },
+    {
+      "id": "q20",
+      "unanswerable": true,
+      "no_relevant_context": true,
+      "retrieval_ms": 0.475,
+      "total_ms": 0.477,
+      "chunk_count": 0,
+      "citations": []
+    }
+  ]
+}
